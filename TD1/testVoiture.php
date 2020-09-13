@@ -8,7 +8,10 @@
 	<body>
 		
 		<?php
-			require_once() 
+			require('Voitu.php'); 
+
+			$voiture1 = new Voiture('Tesla', 'Blanche', 'NB 930 RL'); 
+			$voiture1->afficher(); 
 		?>
 
 	</body>

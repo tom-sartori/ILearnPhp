@@ -15,7 +15,7 @@ class Voiture {
            
   // une methode d'affichage.
   public function afficher() {
-    echo "Voiture : $this->marque de couleur : $this->couleur et d'immatriculation : $this->immatriculation. ";
+    echo "Voiture : $this->marque de couleure : $this->couleur et d'immatriculation : $this->immatriculation. ";
   }
       
   // un getter      
