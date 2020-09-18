@@ -1,8 +1,8 @@
 <?php 
-require_once 'Model.php'; 
+//require_once 'Model.php'; 
 require_once '../TD1/Voiture.php'; 
 	
-
+/*
 $rep = Model::$pdo-> query('select * from voiture'); 	
 //$tab_obj = $rep->fetchAll(PDO::FETCH_OBJ);
 
@@ -13,7 +13,11 @@ $tab_voit = $rep->fetchAll();
 foreach ($tab_voit as $key) {
 	$key->afficher();
 }
+*/
 
-
+$tabVoit = Voiture::getAllVoitures(); 
+foreach ($tabVoit as $key) {
+	$key->afficher();
+}
 
 ?> 

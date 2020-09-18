@@ -1,4 +1,5 @@
 <?php
+
 class Voiture {
    
   private $marque;
@@ -52,6 +53,16 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
       $this->immatriculation = $i; 
     else 
       echo "Immatriculation invalide"; 
+  }
+
+  public static function getAllVoitures() {
+    require_once 'Model.php'; 
+
+    $rep = Model::$pdo-> query('select * from voiture');  
+    $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+    $tab_voit = $rep->fetchAll();
+
+    return $tab_voit; 
   }
 }
 ?>
