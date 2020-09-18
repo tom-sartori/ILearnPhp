@@ -7,15 +7,21 @@ class Voiture {
 
       
   // un constructeur
-  public function __construct($m, $c, $i)  {
-   $this->marque = $m;
-   $this->couleur = $c;
-   $this->immatriculation = $i;
-  } 
+public function __construct($m = NULL, $c = NULL, $i = NULL) {
+  if (!is_null($m) && !is_null($c) && !is_null($i)) {
+    // Si aucun de $m, $c et $i sont nuls,
+    // c'est forcement qu'on les a fournis
+    // donc on retombe sur le constructeur à 3 arguments
+    $this->marque = $m;
+    $this->couleur = $c;
+    $this->immatriculation = $i;
+  }
+}
+
            
   // une methode d'affichage.
   public function afficher() {
-    echo "Voiture : $this->marque de couleure : $this->couleur et d'immatriculation : $this->immatriculation. ";
+    echo "Voiture : $this->marque de couleur : $this->couleur et d'immatriculation : $this->immatriculation. <br>";
   }
       
   // un getter      
