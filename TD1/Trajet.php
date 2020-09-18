@@ -10,8 +10,10 @@ class Trajet {
 
 
 	public function __construct($data) {
-		foreach ($data as $key => $value) {
-			$this->$key = $value;
+		if (!is_null($data)) {
+			foreach ($data as $key => $value) {
+				$this->$key = $value;
+			}
 		}
 	}
 
@@ -21,6 +23,16 @@ class Trajet {
 
 	public function set($attribut, $valeur) {
 		$this->$attribut = $valeur; 
+	}
+
+	public static function getAllTrajets() {
+		require_once 'Model.php'; 
+
+		$rep = Model::$pdo-> query('select * from trajet');  
+		$rep->setFetchMode(PDO::FETCH_CLASS, 'Trajet');
+		$tab_traj = $rep->fetchAll();
+
+		return $tab_traj; 
 	}
 }
 
