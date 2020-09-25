@@ -59,7 +59,7 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
     require_once 'Model.php'; 
 
     $rep = Model::$pdo-> query('select * from voiture');  
-    $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+    $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');  // Pas oublier le try catch
     $tab_voit = $rep->fetchAll();
 
     return $tab_voit; 

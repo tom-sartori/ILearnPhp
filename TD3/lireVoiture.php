@@ -27,8 +27,10 @@ foreach ($tab_immat as $key => $value){
 }
 var_dump($tab_immat);
 
-
+/*
 $voiture1 = new Voiture("Renault", "Vert", "AZ23AN");
 $voiture1->save();
+*/
+
 
 ?> 
