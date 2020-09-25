@@ -60,4 +60,23 @@ class Trajet {
             die();
         }
     }
+
+    public static function findPassagers($id) {
+        $sql = "select login, nom, prenom from utilisateur u join passager p on u.login = p.utilisateur_login WHERE p.trajet_id = :tag_id";
+        $req_prep = Model::$pdo->prepare($sql);
+
+        $values = array(
+            "tag_id" => $id,
+        );
+
+        $req_prep->execute($values);
+
+        // On récupère les résultats comme précédemment
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+        $tab_user = $req_prep->fetchAll();
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        if (empty($tab_user))
+            return false;
+        return $tab_user;
+    }
 }
