@@ -85,6 +85,20 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
       return false;
     return $tab_voit[0];
   }
+
+  public function save() {
+    require_once 'Model.php';
+
+    $sql = "INSERT INTO voiture  VALUES (:tag_i , :tag_m, :tag_c)";
+    $req_prep = Model::$pdo->prepare($sql);
+
+    $values = array(
+        "tag_m" => $this->marque,
+      "tag_c" => $this->couleur,
+      "tag_i" => $this->immatriculation
+    );
+    $req_prep->execute($values);
+  }
 }
 ?>
 
