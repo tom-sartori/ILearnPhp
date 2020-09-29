@@ -1,7 +1,7 @@
 <?php
     require_once('Trajet.php');
 
-    $tab = Trajet::findPassagers('1');
+    $tab = Trajet::findPassagers($_GET['id']);
 
     foreach ($tab as $key => $value) {
         $value->afficher();
