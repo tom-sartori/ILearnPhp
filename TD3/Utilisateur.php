@@ -53,4 +53,25 @@ class Utilisateur {
             die();
         }
     }
+
+    public static function findTrajets($login) {
+        $sql = "SELECT id, depart, arrivee FROM trajet t
+                JOIN passager p ON t.id = p.trajet_id
+                WHERE p.utilisateur_login = :tag_login ;";
+
+        $rep_prep = Model::$pdo->prepare($sql);
+
+        $values = array(
+            "tag_login" => $login,
+        );
+
+        $rep_prep -> execute($values);
+
+        $rep_prep -> setFetchMode(PDO::FETCH_CLASS, 'Trajet');
+        $tab_trajet = $rep_prep->fetchAll();
+
+        if (empty($tab_trajet))
+            return false;
+        return $tab_trajet;
+    }
 }
