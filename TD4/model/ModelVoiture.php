@@ -66,6 +66,7 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
   }
 
   public static function getVoitureByImmat($immat) {
+    require_once 'Model.php';
     $sql = "SELECT * from voiture WHERE immatriculation=:nom_tag";
     // Préparation de la requête
     $req_prep = Model::$pdo->prepare($sql);
@@ -81,7 +82,7 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
     $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
     $tab_voit = $req_prep->fetchAll();
     // Attention, si il n'y a pas de résultats, on renvoie false
-    if (empty($tab_voit))
+    if (empty($tab_voit)) 
       return false;
     return $tab_voit[0];
   }

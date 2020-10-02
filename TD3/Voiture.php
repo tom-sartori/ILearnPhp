@@ -91,7 +91,7 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
 
     $sql = "INSERT INTO voiture  VALUES (:tag_i , :tag_m, :tag_c)";
     $req_prep = Model::$pdo->prepare($sql);
-
+    // try catch exception 23000
     $values = array(
         "tag_m" => $this->marque,
       "tag_c" => $this->couleur,
