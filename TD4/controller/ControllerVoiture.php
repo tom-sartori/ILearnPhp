@@ -15,6 +15,20 @@ class ControllerVoiture {
     	else
     		require('../view/voiture/detail.php');
     }
+
+    public static function create() {
+        require('../view/voiture/create.php');
+    }
+
+    public static function created() {
+        $marque -> $_GET['marque']; 
+        $couleur -> $_GET['couleur']; 
+        $Immatriculation -> $_GET['immatriculation']; 
+
+        $voiture = new ModelVoiture($marque, $couleur, $immatriculation); 
+        $voiture::save(); 
+
+    }
 }
 
 
