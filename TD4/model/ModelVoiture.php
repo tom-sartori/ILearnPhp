@@ -59,7 +59,7 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
     require_once 'Model.php'; 
 
     $rep = Model::$pdo-> query('select * from voiture');  
-    $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');  // Pas oublier le try catch
+    $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');  // Pas oublier le try catch
     $tab_voit = $rep->fetchAll();
 
     return $tab_voit; 
@@ -78,7 +78,7 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
     $req_prep->execute($values);
 
     // On récupère les résultats comme précédemment
-    $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+    $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
     $tab_voit = $req_prep->fetchAll();
     // Attention, si il n'y a pas de résultats, on renvoie false
     if (empty($tab_voit))

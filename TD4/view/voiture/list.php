@@ -6,6 +6,7 @@
     </head>
     <body>
         <?php
+
         foreach ($tab_v as $v) 
             echo '<p> Voiture d\'immatriculation ' . $v->getImmatriculation() . '.</p>';
         ?>
