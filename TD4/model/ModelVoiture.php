@@ -1,64 +1,64 @@
 <?php
 
 class ModelVoiture {
-   
+
   private $marque;
   private $couleur;
   private $immatriculation;
 
-      
+
   // un constructeur
-public function __construct($m = NULL, $c = NULL, $i = NULL) {
-  if (!is_null($m) && !is_null($c) && !is_null($i)) {
+  public function __construct($m = NULL, $c = NULL, $i = NULL) {
+    if (!is_null($m) && !is_null($c) && !is_null($i)) {
     // Si aucun de $m, $c et $i sont nuls,
     // c'est forcement qu'on les a fournis
     // donc on retombe sur le constructeur à 3 arguments
-    $this->marque = $m;
-    $this->couleur = $c;
-    $this->immatriculation = $i;
+      $this->marque = $m;
+      $this->couleur = $c;
+      $this->immatriculation = $i;
+    }
   }
-}
 
-           
+
   // une methode d'affichage.
   public function afficher() {
     echo "Voiture : $this->marque de couleur : $this->couleur et d'immatriculation : $this->immatriculation. <br>";
   }
-      
+
   // un getter      
   public function getMarque() {
-       return $this->marque;  
-  }
-     
+   return $this->marque;  
+ }
+
   // un setter 
-  public function setMarque($marque2) {
-       $this->marque = $marque2;
-  }
+ public function setMarque($marque2) {
+   $this->marque = $marque2;
+ }
 
 
-  public function getCouleur() {
-    return $this->couleur; 
-  }
+ public function getCouleur() {
+  return $this->couleur; 
+}
 
-  public function setCouleur($c) {
-    $this->couleur = $c; 
-  }
+public function setCouleur($c) {
+  $this->couleur = $c; 
+}
 
-  public function getImmatriculation() {
-    return $this->immatriculation; 
-  }
+public function getImmatriculation() {
+  return $this->immatriculation; 
+}
 
-  public function setImmatriculation($i) {
-    if (strlen($i) <= 8)
-      $this->immatriculation = $i; 
-    else 
-      echo "Immatriculation invalide"; 
-  }
+public function setImmatriculation($i) {
+  if (strlen($i) <= 8)
+    $this->immatriculation = $i; 
+  else 
+    echo "Immatriculation invalide"; 
+}
 
-  public static function getAllVoitures() {
-    require_once 'Model.php'; 
+public static function getAllVoitures() {
+  require_once 'Model.php'; 
 
-    $rep = Model::$pdo-> query('select * from voiture');  
+  $rep = Model::$pdo-> query('select * from voiture');  
     $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');  // Pas oublier le try catch
     $tab_voit = $rep->fetchAll();
 
@@ -72,7 +72,7 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
     $req_prep = Model::$pdo->prepare($sql);
 
     $values = array(
-        "nom_tag" => $immat,
+      "nom_tag" => $immat,
       //nomdutag => valeur, ...
     );
     // On donne les valeurs et on exécute la requête
@@ -90,15 +90,22 @@ public function __construct($m = NULL, $c = NULL, $i = NULL) {
   public function save() {
     require_once 'Model.php';
 
-    $sql = "INSERT INTO voiture  VALUES (:tag_i , :tag_m, :tag_c)";
-    $req_prep = Model::$pdo->prepare($sql);
+    try {
+      $sql = "INSERT INTO voiture  VALUES (:tag_i , :tag_m, :tag_c)";
+      $req_prep = Model::$pdo->prepare($sql);
 
-    $values = array(
+      $values = array(
         "tag_m" => $this->marque,
-      "tag_c" => $this->couleur,
-      "tag_i" => $this->immatriculation
-    );
-    $req_prep->execute($values);
+        "tag_c" => $this->couleur,
+        "tag_i" => $this->immatriculation
+      );
+
+
+      $req_prep->execute($values);
+    }
+    catch(PDOException $e) {
+      return false; 
+    }
   }
 }
 ?>

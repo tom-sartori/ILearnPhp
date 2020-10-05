@@ -22,6 +22,7 @@ class ControllerVoiture {
 
     public static function created() {
         $voiture = new ModelVoiture($_GET['marque'], $_GET['couleur'], $_GET['immatriculation']); 
+        
         $voiture -> save(); 
 
         ControllerVoiture::readAll(); 
