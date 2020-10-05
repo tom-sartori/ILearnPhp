@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<form method="get" action="routeur.php?action=created">
+		<form method="get" action="routeur.php?">
 			<fieldset>
 				<legend>Mon formulaire :</legend>
 				<p>
@@ -26,6 +26,7 @@
 
 
 				<p>
+					<input type='hidden' name='action' value='created'>
 					<input type="submit" value="Envoyer" />
 					<!-- Ajoute les élements dans le query string du lien 
 						Cela remplit le tableau $_Get, puis lance le script formmulaireVoiture.php
