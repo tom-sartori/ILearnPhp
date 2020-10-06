@@ -23,9 +23,12 @@ class ControllerVoiture {
     public static function created() {
         $voiture = new ModelVoiture($_GET['marque'], $_GET['couleur'], $_GET['immatriculation']); 
         
-        $voiture -> save(); 
+        $bool = $voiture -> save(); 
 
-        ControllerVoiture::readAll(); 
+        if ($bool == false) 
+            require('../view/voiture/errorSave.php'); 
+        else 
+            ControllerVoiture::readAll(); 
     }
 }
 
