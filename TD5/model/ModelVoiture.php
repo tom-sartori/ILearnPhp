@@ -1,4 +1,5 @@
 <?php
+require_once (File::build_path(array("model", "Model.php"))); 
 
 class ModelVoiture {
 
@@ -56,8 +57,6 @@ public function setImmatriculation($i) {
 }
 
 public static function getAllVoitures() {
-  require_once 'Model.php'; 
-
   $rep = Model::$pdo-> query('select * from voiture');  
     $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');  // Pas oublier le try catch
     $tab_voit = $rep->fetchAll();
@@ -66,7 +65,6 @@ public static function getAllVoitures() {
   }
 
   public static function getVoitureByImmat($immat) {
-    require_once 'Model.php';
     $sql = "SELECT * from voiture WHERE immatriculation=:nom_tag";
     // Préparation de la requête
     $req_prep = Model::$pdo->prepare($sql);
@@ -87,26 +85,30 @@ public static function getAllVoitures() {
     return $tab_voit[0];
   }
 
-  public function save() {
-    require_once 'Model.php';
+  public function save(){
+   $sql = "INSERT INTO voiture VALUES (:immat,:marque,:couleur)";
 
-    try {
-      $sql = "INSERT INTO voiture  VALUES (:tag_i , :tag_m, :tag_c)";
-      $req_prep = Model::$pdo->prepare($sql);
-
-      $values = array(
-        "tag_m" => $this->marque,
-        "tag_c" => $this->couleur,
-        "tag_i" => $this->immatriculation
-      );
-
-
-      $req_prep->execute($values);
-    }
-    catch(PDOException $e) {
-      return false; 
-    }
-  }
+   try {
+     $req_prep = Model::$pdo->prepare($sql);
+     $value = array(
+       "immat"=>$this->immatriculation,
+       "marque"=>$this->marque,
+       "couleur"=>$this->couleur,
+     );
+     $req_prep->execute($value);
+     return true;
+   }
+   
+   catch (PDOException $e) {
+     if($e->getCode()==23000){
+       return false;
+     }else {
+       echo $e->getMessage();
+     }
+     die();
+   }
+ }
 }
+
 ?>
 
