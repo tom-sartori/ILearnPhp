@@ -10,9 +10,11 @@
     foreach ($tab_v as $v) {
             //echo '<p> Voiture d\'immatriculation ' . $v->getImmatriculation() . '.</p>';
 
-        echo '<p> Voiture d\'immatriculation ' . '<a href="./index.php?action=read&Immatriculation=' . $v->getImmatriculation() . '">' . $v->getImmatriculation() . '. </a>' . 
+    	$imat = htmlspecialchars($v->getImmatriculation()); 
 
-        '<a href="./index.php?action=delete&immatriculation='. $v->getImmatriculation().'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
+        echo '<p> Voiture d\'immatriculation ' . '<a href="./index.php?action=read&Immatriculation=' . $imat . '">' . $imat . '. </a>' . 
+
+        '<a href="./index.php?action=delete&immatriculation='. $imat .'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
 
     }
     ?>
