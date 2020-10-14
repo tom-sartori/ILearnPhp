@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des voitures</title>
-</head>
-<body>
     <?php
 
     foreach ($tab_v as $v) {
             //echo '<p> Voiture d\'immatriculation ' . $v->getImmatriculation() . '.</p>';
 
-    	$imat = htmlspecialchars($v->getImmatriculation()); 
-    	$imat2 = rawurlencode($v -> getImmatriculation()); 
+       $imat = htmlspecialchars($v->getImmatriculation()); 
+       $imat2 = rawurlencode($v -> getImmatriculation()); 
 
-        echo '<p> Voiture d\'immatriculation ' . '<a href="./index.php?action=read&Immatriculation=' . $imat2 . '">' . $imat . '. </a>' . 
+       echo '<p> Voiture d\'immatriculation ' . '<a href="./index.php?action=read&Immatriculation=' . $imat2 . '">' . $imat . '. </a>' . 
 
-        '<a href="./index.php?action=delete&immatriculation='. $imat2 .'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
+       '<a href="./index.php?action=delete&immatriculation='. $imat2 .'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
 
-    }
-    ?>
-</body>
-</html>
+   }
+   ?>

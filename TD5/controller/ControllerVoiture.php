@@ -8,19 +8,33 @@ require_once (File::build_path(array("model", "ModelVoiture.php"))); // chargeme
 class ControllerVoiture {
   public static function readAll() {
         $tab_v = ModelVoiture::getAllVoitures();     //appel au modèle pour gerer la BD
-        require (File::build_path(array("view", "voiture", "list.php")));  //"redirige" vers la vue
+
+        $controller = 'voiture'; 
+        $view = 'list'; 
+        $pagetitle = 'Liste des voitures'; 
+        require (File::build_path(array("view", "view.php")));  //"redirige" vers la vue
       }
 
       public static function read() {
        $v = ModelVoiture::getVoitureByImmat($_GET['Immatriculation']); 
-       if ($v == false)
-        require(File::build_path(array("view", "voiture", "error.php")));
-      else
-        require(File::build_path(array("view", "voiture", "detail.php")));
+       $controller = 'voiture'; 
+       if ($v == false) {
+        $view = 'error'; 
+        $pagetitle = 'Erreur';
+        require(File::build_path(array("view", "view.php")));
+      }
+      else {
+        $view = 'detail'; 
+        $pagetitle = 'Details du véhicule';
+        require(File::build_path(array("view", "view.php")));
+      }
     }
 
     public static function create() {
-      require(File::build_path(array("view", "voiture", "create.php")));
+      $controller = 'voiture'; 
+      $view = 'create'; 
+      $pagetitle = 'Creation de voiture'; 
+      require(File::build_path(array("view", "view.php")));
     }
 
     public static function created() {
@@ -28,15 +42,17 @@ class ControllerVoiture {
 
       $bool = $voiture -> save(); 
 
+      $controller = 'voiture'; 
+      $view = 'errorSave'; 
+      $pagetitle = 'Erreur de sauvegarde'; 
       if ($bool == false) 
-        require(File::build_path(array("view", "voiture", "errorSave.php"))); 
+        require(File::build_path(array("view", "view.php"))); 
       else 
         self::readAll(); 
     }
 
 
-
-   public static function delete(){
+    public static function delete(){
      $sql = "DELETE FROM voiture WHERE immatriculation=:immat";
      try {
        $req_prep = Model::$pdo->prepare($sql);
