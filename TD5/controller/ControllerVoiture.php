@@ -43,12 +43,18 @@ class ControllerVoiture {
       $bool = $voiture -> save(); 
 
       $controller = 'voiture'; 
-      $view = 'errorSave'; 
-      $pagetitle = 'Erreur de sauvegarde'; 
-      if ($bool == false) 
+
+      if ($bool == false) {
+        $view = 'errorSave'; 
+        $pagetitle = 'Erreur de sauvegarde'; 
         require(File::build_path(array("view", "view.php"))); 
-      else 
-        self::readAll(); 
+      }
+      else {
+        $view = 'created'; 
+        $pagetitle = 'Voiture créée'; 
+        $tab_v = ModelVoiture::getAllVoitures();
+        require(File::build_path(array("view", "view.php")));
+      }
     }
 
 
