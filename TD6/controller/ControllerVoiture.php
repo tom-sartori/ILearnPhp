@@ -98,6 +98,14 @@ class ControllerVoiture {
   }
 
 
+  public static function update() {
+    $v = ModelVoiture::getVoitureByImmat($_GET['Immatriculation']); 
+    require(File::build_path(array("view", "voiture", "update.php")));
+  } 
+
+
+
+
 
 /* Ancien 
 require_once ('../model/ModelVoiture.php'); // chargement du modèle
