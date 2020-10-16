@@ -73,6 +73,10 @@ class ControllerVoiture {
      }
    }
 
+   public static function error() {
+    require (File::build_path(array("view", "voiture", "error.php")));
+   }
+
 
 
 /* Ancien 
