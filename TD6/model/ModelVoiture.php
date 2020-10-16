@@ -108,6 +108,21 @@ public static function getAllVoitures() {
      die();
    }
  }
+
+ public static function deleteByImmat($immat) { 
+   $sql = "DELETE FROM voiture WHERE immatriculation=:immat";
+   try {
+     $req_prep = Model::$pdo->prepare($sql);
+     $value = array(
+      "immat"=> $immat
+     );
+     $req_prep->execute($value);
+   }
+   catch (PDOException $e) {
+     echo $e->getMessage();
+   }
+
+ }
 }
 
 ?>

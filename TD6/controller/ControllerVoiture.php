@@ -47,6 +47,7 @@ class ControllerVoiture {
       if ($bool == false) {
         $view = 'errorSave'; 
         $pagetitle = 'Erreur de sauvegarde'; 
+        $tab_v = ModelVoiture::getAllVoitures();
         require(File::build_path(array("view", "view.php"))); 
       }
       else {
@@ -59,6 +60,18 @@ class ControllerVoiture {
 
 
     public static function delete(){
+      $immat = $_GET['immatriculation']; 
+      ModelVoiture::deleteByImmat($immat); 
+
+      $tab_v = ModelVoiture::getAllVoitures(); 
+
+      $controller = 'voiture'; 
+      $view = 'deleted'; 
+      $pagetitle = 'Voiture supprimée'; 
+
+      require_once(File::build_path(array("view", "view.php"))); 
+
+    /* Pas d'utilité ici car devrait etre dans le model
      $sql = "DELETE FROM voiture WHERE immatriculation=:immat";
      try {
        $req_prep = Model::$pdo->prepare($sql);
@@ -71,11 +84,18 @@ class ControllerVoiture {
      catch (PDOException $e) {
        echo $e->getMessage();
      }
+    */
    }
 
    public static function error() {
-    require (File::build_path(array("view", "voiture", "error.php")));
-   }
+    $controller = 'voiture'; 
+    $view = 'errorAction'; 
+    $pagetitle = 'Erreur'; 
+
+    $tab_v = ModelVoiture::getAllVoitures(); 
+
+    require (File::build_path(array("view", "view.php")));
+  }
 
 
 
