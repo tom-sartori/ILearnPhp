@@ -115,13 +115,31 @@ public static function getAllVoitures() {
      $req_prep = Model::$pdo->prepare($sql);
      $value = array(
       "immat"=> $immat
-     );
+    );
      $req_prep->execute($value);
    }
    catch (PDOException $e) {
      echo $e->getMessage();
    }
 
+ }
+
+ public static function update($data) {
+     $sql = "UPDATE voiture SET couleur = :couleur, marque = :marque  WHERE immatriculation=:immat";
+   try {
+     $req_prep = Model::$pdo->prepare($sql);
+     $value = array(
+      "immat"=> $data['immatriculation'], 
+      "couleur" => $data['couleur'], 
+      "marque" => $data['marque']
+    );
+     $req_prep->execute($value);
+     return true; 
+   }
+   catch (PDOException $e) {
+     echo $e->getMessage();
+     return false; 
+   }
  }
 }
 

@@ -99,9 +99,36 @@ class ControllerVoiture {
 
 
   public static function update() {
-    $v = ModelVoiture::getVoitureByImmat($_GET['Immatriculation']); 
-    require(File::build_path(array("view", "voiture", "update.php")));
+    $v = ModelVoiture::getVoitureByImmat($_GET['immatriculation']); 
+
+    $controller = 'voiture'; 
+    $view = 'update'; 
+    $pagetitle = 'Mise a jour';
+
+    require (File::build_path(array("view", "view.php")));
   } 
+
+  public static function updated() {
+    $bool = ModelVoiture::update($_GET); 
+
+    if ($bool) {
+      $immat = $_GET['immatriculation'];
+      $tab_v = ModelVoiture::getAllVoitures(); 
+
+      $controller = 'voiture'; 
+      $view = 'updated'; 
+      $pagetitle = 'Voiture mise à jour'; 
+
+      require_once(File::build_path(array("view", "view.php"))); 
+    }
+    else {
+      $controller = 'voiture'; 
+      $view = 'errorAction'; 
+      $pagetitle = 'Erreur MAJ'; 
+
+      require_once(File::build_path(array("view", "view.php"))); 
+    }
+  }
 
 
 
