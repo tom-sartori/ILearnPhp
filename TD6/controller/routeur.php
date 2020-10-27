@@ -1,5 +1,7 @@
 <?php
 require_once (File::build_path(array("controller", "ControllerVoiture.php")));
+require_once (File::build_path(array("controller", "ControllerUtilisateur.php")));
+
 // On recupère l'action passée dans l'URL
 if (!isset($_GET['action'])) 
 	$action = 'readAll';
