@@ -1,14 +1,14 @@
 <?php
 
-foreach ($tab_u as $v) {
+foreach ($tab_u as $u) {
     //echo '<p> Voiture d\'immatriculation ' . $v->getImmatriculation() . '.</p>';
 
-    $login = htmlspecialchars($v->get("login"));
-    $login2 = rawurlencode($v -> get("login"));
+    $login = htmlspecialchars($u->get("login"));
+    $login2 = rawurlencode($u -> get("login"));
 
-    echo '<p>Login : ' . '<a href="./index.php?action=read&Immatriculation=' . $login2 . '">' . $login . '. </a>' .
+    echo '<p>Login : ' . '<a href="./index.php?action=read&controller=utilisateur&login=' . $login2 . '">' . $login . '. </a>' .
 
-        '<a href="./index.php?action=delete&immatriculation='. $login2 .'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
+        '<a href="./index.php?action=delete&controller=utilisateur&login='. $login2 .'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
 
 }
 ?>
