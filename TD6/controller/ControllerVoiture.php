@@ -6,6 +6,9 @@ require_once (File::build_path(array("model", "ModelVoiture.php"))); // chargeme
 
 
 class ControllerVoiture {
+
+    protected static $object = "voiture";
+
   public static function readAll() {
         $tab_v = ModelVoiture::selectAll();     //appel au modèle pour gerer la BD
 

@@ -6,6 +6,9 @@ require_once (File::build_path(array("model", "ModelUtilisateur.php"))); // char
 
 
 class ControllerUtilisateur {
+
+    protected static $object = 'utilisateur';
+
   public static function readAll() {
         $tab_u = ModelUtilisateur::selectAll();     //appel au modèle pour gerer la BD
 
