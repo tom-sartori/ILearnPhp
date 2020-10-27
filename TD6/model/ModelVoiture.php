@@ -7,6 +7,7 @@ class ModelVoiture extends Model {
   private $couleur;
   private $immatriculation;
   protected static $object = 'voiture';
+  protected static $primary = 'immatriculation';
 
 
   // un constructeur

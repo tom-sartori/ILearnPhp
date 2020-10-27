@@ -6,7 +6,7 @@
        $imat = htmlspecialchars($v->getImmatriculation()); 
        $imat2 = rawurlencode($v -> getImmatriculation()); 
 
-       echo '<p> Voiture d\'immatriculation ' . '<a href="./index.php?action=read&Immatriculation=' . $imat2 . '">' . $imat . '. </a>' . 
+       echo '<p> Voiture d\'immatriculation ' . '<a href="./index.php?action=read&immatriculation=' . $imat2 . '">' . $imat . '. </a>' .
 
        '<a href="./index.php?action=delete&immatriculation='. $imat2 .'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
 

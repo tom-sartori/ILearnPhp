@@ -8,6 +8,7 @@ class ModelUtilisateur extends Model {
     private $nom;
     private $prenom;
     protected static $object = 'utilisateur';
+    protected static $primary = 'login';
 
     // Getter générique (pas expliqué en TD)
     public function get($nom_attribut) {

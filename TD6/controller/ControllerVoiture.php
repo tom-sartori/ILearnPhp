@@ -16,7 +16,7 @@ class ControllerVoiture {
       }
 
       public static function read() {
-       $v = ModelVoiture::getVoitureByImmat($_GET['Immatriculation']); 
+       $v = ModelVoiture::select($_GET['immatriculation']);
        $controller = 'voiture'; 
        if ($v == false) {
         $view = 'error'; 
