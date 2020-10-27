@@ -32,12 +32,19 @@ class Model {
 			}
 			die(); 
 		}
-
-
-
-
-
 	}
+
+    public static function selectAll() {
+        $table_name = static::$object;
+        $class_name = "Model" . ucfirst($table_name);
+
+        $rep = Model::$pdo->query('select * from ' . $table_name);
+        $rep->setFetchMode(PDO::FETCH_CLASS, $class_name);  // Pas oublier le try catch
+        $tab = $rep->fetchAll();
+
+        return $tab;
+    }
+
 }
 Model::Init(); 
 ?>

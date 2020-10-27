@@ -1,11 +1,12 @@
 <?php
 require_once (File::build_path(array("model", "Model.php"))); 
 
-class ModelVoiture {
+class ModelVoiture extends Model {
 
   private $marque;
   private $couleur;
   private $immatriculation;
+  protected static $object = 'voiture';
 
 
   // un constructeur

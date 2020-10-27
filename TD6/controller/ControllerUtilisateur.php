@@ -7,7 +7,7 @@ require_once (File::build_path(array("model", "ModelUtilisateur.php"))); // char
 
 class ControllerUtilisateur {
   public static function readAll() {
-        $tab_u = ModelUtilisateur::getAllUtilisateurs();     //appel au modèle pour gerer la BD
+        $tab_u = ModelUtilisateur::selectAll();     //appel au modèle pour gerer la BD
 
         $controller = 'utilisateur';
         $view = 'list'; 
