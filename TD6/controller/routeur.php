@@ -9,8 +9,22 @@ else {
 		$action = 'error'; 
 }
 
-// Appel de la méthode statique $action de ControllerVoiture
-ControllerVoiture::$action(); 
+if (!isset($_GET['controller'])) {
+    $controller = 'voiture';
+    $controller_class = "ControllerVoiture";
+
+    $controller_class::$action();
+}
+else {
+    $controller = $_GET['controller'];
+    $controller_class = "Controller" . ucfirst($controller);
+    if(!class_exists($controller_class)) {
+        $action = 'error';
+        ControllerVoiture::$action();
+    }
+    else
+        $controller_class::$action();
+}
 
 
 
