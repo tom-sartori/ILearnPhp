@@ -63,8 +63,7 @@ class ControllerVoiture {
 
 
     public static function delete(){
-      $immat = $_GET['immatriculation']; 
-      ModelVoiture::deleteByImmat($immat); 
+      $immat = ModelVoiture::delete($_GET['immatriculation']);
 
       $tab_v = ModelVoiture::getAllVoitures(); 
 

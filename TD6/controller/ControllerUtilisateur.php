@@ -32,5 +32,17 @@ class ControllerUtilisateur {
             require(File::build_path(array("view", "view.php")));
         }
     }
+
+    public static function delete() {
+        $login = ModelUtilisateur::delete($_GET['login']);
+
+        $tab_u = ModelUtilisateur::selectAll();
+
+        $controller = 'utilisateur';
+        $view = 'deleted';
+        $pagetitle = 'Utilisateur supprimé';
+
+        require_once(File::build_path(array("view", "view.php")));
+    }
 }
 ?>

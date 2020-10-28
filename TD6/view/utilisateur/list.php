@@ -8,7 +8,7 @@ foreach ($tab_u as $u) {
 
     echo '<p>Login : ' . '<a href="./index.php?action=read&controller=utilisateur&login=' . $login2 . '">' . $login . '. </a>' .
 
-        '<a href="./index.php?action=delete&controller=utilisateur&login='. $login2 .'">'.'Supprimer cette Voiture'.'</a>' . '.</p>';
+        '<a href="./index.php?action=delete&controller=utilisateur&login='. $login2 .'">'.'Supprimer cet utilisateur'.'</a>' . '.</p>';
 
 }
 ?>
