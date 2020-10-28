@@ -34,8 +34,10 @@ class ControllerVoiture {
     }
 
     public static function create() {
-      $controller = 'voiture'; 
-      $view = 'create'; 
+      $v = new ModelVoiture();
+
+      $controller = 'voiture';
+      $view = 'update';
       $pagetitle = 'Creation de voiture'; 
       require(File::build_path(array("view", "view.php")));
     }
