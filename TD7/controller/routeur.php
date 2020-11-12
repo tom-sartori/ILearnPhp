@@ -11,7 +11,7 @@ else {
 		$action = 'error'; 
 }
 
-$controller_default = 'voiture';
+$controller_default = 'trajet';
 
 if (isset($_COOKIE['preference']))
     $controller_default = $_COOKIE['preference'];
