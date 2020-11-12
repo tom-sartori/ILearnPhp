@@ -11,7 +11,7 @@ else {
 		$action = 'error'; 
 }
 
-$controller_default = 'trajet';
+$controller_default = 'utilisateur';
 
 if (isset($_COOKIE['preference']))
     $controller_default = $_COOKIE['preference'];
