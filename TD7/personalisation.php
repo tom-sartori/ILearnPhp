@@ -1,6 +1,6 @@
 <?php
 
-    $value = $_GET['preference'];
+    $value = $_POST['preference'];
 
     setcookie('cookiePreference', $value, time()+3600);
 
