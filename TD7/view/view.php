@@ -10,6 +10,7 @@
 		<a href="index.php?action=readAll&controller=utilisateur"> Liste des utilisateurs </a> 
 		<a href="index.php?action=readAll&controller=trajet"> Liste des trajets </a> 
 	</nav>
+    <link href="../personalisation.php">
 </head>
 <body>
 	<?php

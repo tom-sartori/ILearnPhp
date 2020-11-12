@@ -1,5 +1,4 @@
 <?php
-    echo "test";
 
     $value = $_GET['preference'];
 
