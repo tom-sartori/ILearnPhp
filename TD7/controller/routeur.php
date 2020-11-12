@@ -12,6 +12,11 @@ else {
 }
 
 $controller_default = 'voiture';
+
+if (isset($_COOKIE['preference']))
+    $controller_default = $_COOKIE['preference'];
+
+
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
     $controller_class = "Controller" . ucfirst($controller);
