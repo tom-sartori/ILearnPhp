@@ -11,10 +11,11 @@ else {
 		$action = 'error'; 
 }
 
-$controller_default = 'utilisateur';
+$controller_default = 'voiture';
 
-if (isset($_COOKIE['preference']))
+if (isset($_COOKIE['preference'])) {
     $controller_default = $_COOKIE['preference'];
+}
 
 
 if (isset($_GET['controller'])) {
