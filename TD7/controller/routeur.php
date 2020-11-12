@@ -15,10 +15,6 @@ $controller_default = 'voiture';
 
 if (isset($_COOKIE['cookiePreference'])) {
     $controller_default = $_COOKIE['cookiePreference'];
-    $controller = $controller_default;
-    $controller_class = "Controller" . ucfirst($controller_default);
-
-    $controller_class::$action();
 }
 
 

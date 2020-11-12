@@ -4,7 +4,6 @@
 
     setcookie('cookiePreference', $value, time()+3600);
 
-    echo $_COOKIE['cookiePreference'];
-
+    require ("index.php");
 
 ?>
