@@ -13,7 +13,7 @@ else {
 
 $controller_default = 'voiture';
 
-if (isset($_COOKIE['preference'])) {
+if (isset($_COOKIE['cookiePreference'])) {
     $controller_default = $_COOKIE['preference'];
     $controller = $controller_default;
     $controller_class = "Controller" . ucfirst($controller_default);
