@@ -11,7 +11,7 @@
 		<a href="index.php?action=readAll&controller=trajet"> Liste des trajets </a> 
 	</nav>
     <?php
-        File::build_path(array(preference.html));
+        File::build_path(array("preference.html"));
     ?>
 </head>
 <body>
