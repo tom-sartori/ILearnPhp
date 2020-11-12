@@ -11,13 +11,8 @@ else {
 		$action = 'error'; 
 }
 
-if (!isset($_GET['controller'])) {
-    $controller = 'voiture';
-    $controller_class = "ControllerVoiture";
-
-    $controller_class::$action();
-}
-else {
+$controller_default = 'voiture';
+if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
     $controller_class = "Controller" . ucfirst($controller);
     if(!class_exists($controller_class)) {
@@ -26,6 +21,12 @@ else {
     }
     else
         $controller_class::$action();
+}
+else {
+    $controller = $controller_default;
+    $controller_class = "Controller" . ucfirst($controller_default);
+
+    $controller_class::$action();
 }
 
 
