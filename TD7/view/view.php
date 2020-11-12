@@ -11,12 +11,9 @@
 		<a href="index.php?action=readAll&controller=trajet"> Liste des trajets </a> 
 	</nav>
     <?php
-        requiere(File::build_path(array("preference.html")));
+        require(File::build_path(array("preference.html")));
     ?>
 </head>
-<?php
-File::build_path(array("preference.html"));
-?>
 <body>
 	<?php
 // Si $controleur='voiture' et $view='list',
