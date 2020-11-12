@@ -7,6 +7,6 @@ setcookie("TestCookie", serialize($tab), time()+3600);  /* expire dans 1 heure =
 
 echo $_COOKIE["TestCookie"];
 
-setcookie ("TestCookie", "", time() - 1);
+//setcookie ("TestCookie", "", time() - 1);
 
 ?>
