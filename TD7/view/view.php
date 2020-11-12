@@ -10,7 +10,9 @@
 		<a href="index.php?action=readAll&controller=utilisateur"> Liste des utilisateurs </a> 
 		<a href="index.php?action=readAll&controller=trajet"> Liste des trajets </a> 
 	</nav>
-    <iframe src="./preference.html"></iframe>
+    <?php
+        File::build_path(array(preference.html));
+    ?>
 </head>
 <body>
 	<?php
