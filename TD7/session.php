@@ -6,7 +6,7 @@ $tab = array(
     "deux" => "non");
 
     $_SESSION['login'] = 'tom';
-    $_SESSION['tab'] = $tab;
+    $_SESSION['tab'] = $tab['un'];
 
     echo $_SESSION['login'];
     echo $_SESSION['tab'];
